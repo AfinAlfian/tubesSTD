@@ -6,93 +6,51 @@ void createList(ListParent &LP, ListChild &LC, ListRelasi &LR){
     LR.first = nullptr;
 }
 
-addressP alokasiParent(string info){
-    addressP P = new elmParent;
-    P->info = info;
-    P->next = nullptr;
-    return P;
-}
-
-addressC alokasiChild(inventori info){
-    addressC C = new elmChild;
-    C->info = info;
-    C->next = nullptr;
-    return C;
-}
-
-addressR alokasiRelasi(addressP parent, addressC child){
-    addressR R = new elmRelasi;
-    R->parent = parent;
-    R->child = child;
-    R->next = nullptr;
-    return R;
-}
-
-void insertFirstParent(ListParent &LP, addressP P) {
-    if (LP.first == nullptr) {
-        LP.first = P;
-    } else {
-        P->next = LP.first;
-        LP.first = P;
+void tambahCabang(ListParent &LP, ListChild &LC, ListRelasi &LR){
+    addressP p;
+    addressC c;
+    string x;
+    inputCabang(LP, p);
+    cout << "apakah anda ingin sekalian tambah barang? ";
+    cin >> x;
+    if (x == "Y" || x == "y"){
+        inputBarang(LC, c);
+        inputRelasi(LR, p, c);
     }
 }
 
-void insertFirstChild(ListChild &LC, addressC C) {
-    if (LC.first == nullptr) {
-        LC.first = C;
-    } else {
-        C->next = LC.first;
-        LC.first = C;
-    }
-}
-
-void insertFirstRelasi(ListRelasi &LR, addressR R) {
-    if (LR.first == nullptr) {
-        LR.first = R;
-    } else {
-        R->next = LR.first;
-        LR.first = R;
-    }
-}
-
-void inputCabang(ListParent &LP, addressP &P){
+void tambahBarang(ListParent &LP, ListChild &LC, ListRelasi &LR){
+    addressP p;
+    addressC c;
+    addressR r;
+    inputBarang(LC, c);
     string namaCabang;
-    cout << "Masukkan nama cabang: ";
+    cout << "Masukkan nama cabang untuk menambah barang: ";
     cin >> namaCabang;
-    P = alokasiParent(namaCabang);
-    insertFirstParent(LP, P);
+    p = searchCabang(LP, namaCabang);
+    if (p != nullptr){
+        inputRelasi(LR, p, c);
+    }else{
+        cout << "Cabang tidak ditemukan." << endl;
+        cout << "apakah anda ingin menambah cabang baru? (y/n): ";
+        char choice;
+        cin >> choice;
+        if (choice == 'y' || choice == 'Y'){
+            inputCabang(LP, p);
+            inputRelasi(LR, p, c);
+        }
+    }
+
 }
 
-void inputBarang(ListChild &LC, addressC &C){
-    infotype barang;
-    cout << "Masukkan nama barang: ";
-    cin >> barang.namaBarang;
-    cout << "Masukkan jumlah stok: ";
-    cin >> barang.jumlahStok;
-    cout << "Masukkan kategori barang: ";
-    cin >> barang.kategori;
-    barang.statusTersedia = (barang.jumlahStok > 0);
-    C = alokasiChild(barang);
-    insertFirstChild(LC, C);
-}
 
-void inputRelasi(ListRelasi &LR, addressP parent, addressC child){
-    addressR R = alokasiRelasi(parent, child);
-    insertFirstRelasi(LR, R);
-}
 
 void displayInfo(ListParent LP, ListChild LC, ListRelasi LR) {
     addressR R = LR.first;
+    printf("%-20s %-20s %-20s %-20s\n", "Cabang", "Barang", "Jumlah Stok", "kategori");
     while (R != nullptr) {
-        cout << "Cabang: " << R->parent->info << " - Barang: " << R->child->info.namaBarang << endl;
+        printf("%-20s %-20s %-20d %-20s\n", R->parent->info.c_str(), R->child->info.namaBarang.c_str(), R->jumlahStok, R->child->info.kategori.c_str());
         R = R->next;
     }
 }
 
-void inputData(ListParent &LP, ListChild &LC, ListRelasi &LR) {
-    addressP P;
-    addressC C;
-    inputCabang(LP, P);
-    inputBarang(LC, C);
-    inputRelasi(LR, P, C);
-}
