@@ -1,0 +1,34 @@
+#ifndef CHILD_H_included
+#define CHILD_H_included
+#include <iostream>
+#include <string>
+using namespace std;
+
+typedef struct elmChild *addressC;
+typedef struct inventori infotype;
+
+struct inventori{
+    string namaBarang;
+    string kategori;
+    bool statusTersedia;
+};
+
+struct elmChild {
+    infotype info;
+    addressC next;
+};
+
+struct ListChild  { 
+    addressC first; 
+};
+
+addressC alokasiChild(inventori info);
+void insertFirstChild(ListChild &LC, addressC C);
+void inputBarang(ListChild &LC, addressC &C);
+void deleteFirstChild(ListChild &LC, addressC &C);
+void deleteAfterChild(ListChild &LC, addressC &C, addressC prec);
+void deleteLastChild(ListChild &LC, addressC &C);
+addressC searchBarang(ListChild LC, string x);
+
+
+#endif
