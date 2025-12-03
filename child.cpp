@@ -1,18 +1,22 @@
 #include "child.h"
 
 addressC alokasiChild(inventori info){
-    addressC C = new elmChild;
-    C->info = info;
-    C->next = nullptr;
-    return C;
+    addressC c = new elmChild;
+    c->info = info;
+    c->next = nullptr;
+    return c;
 }
 
-void insertFirstChild(ListChild &LC, addressC C) {
-    if (LC.first == nullptr) {
-        LC.first = C;
+bool isEmptyChild(ListChild LC) {
+    return LC.first == nullptr;
+}
+
+void insertFirstChild(ListChild &LC, addressC c) {
+    if (isEmptyChild(LC)) {
+        LC.first = c;
     } else {
-        C->next = LC.first;
-        LC.first = C;
+        c->next = LC.first;
+        LC.first = c;
     }
 }
 
@@ -29,7 +33,7 @@ addressC searchBarang(ListChild LC, string x){
     return find;
 }
 
-void inputBarang(ListChild &LC, addressC &C){
+void inputBarang(ListChild &LC, addressC &c){
     infotype barang;
     addressC find;
     cout << "Masukkan nama barang: ";
@@ -38,46 +42,50 @@ void inputBarang(ListChild &LC, addressC &C){
     if (find == nullptr){
         cout << "Masukkan kategori barang: ";
         cin >> barang.kategori;
-        C = alokasiChild(barang);
-        insertFirstChild(LC, C);       
+        c = alokasiChild(barang);
+        insertFirstChild(LC, c);       
     }else{
-        insertFirstChild(LC, find);
+        cout << "Barang sudah ada dalam inventori." << endl;
     }   
 }
 
-void deleteFirstChild(ListChild &LC, addressC &C){
-    if (LC.first == nullptr){
-        C = nullptr;
+void deleteFirstChild(ListChild &LC, addressC &c){
+    if (isEmptyChild(LC)){
+        c = nullptr;
     }else if (LC.first->next == nullptr){
-        C = LC.first;
+        c = LC.first;
         LC.first = nullptr;
     }else{
-        C = LC.first;
+        c = LC.first;
         LC.first = LC.first->next;
-        C->next = nullptr;
+        c->next = nullptr;
     }
 }
 
-void deleteAfterChild(ListChild &LC, addressC &C, addressC prec){
-    if (prec != nullptr){
-        C = prec->next;
-        prec->next = C->next;
-        C->next = nullptr;
+void deleteAfterChild(ListChild &LC, addressC &c, addressC prec){
+    if (isEmptyChild(LC)){
+        c = nullptr;
+    }else if (prec->next == nullptr){
+        c = nullptr;
+    }else{
+        c = prec->next;
+        prec->next = c->next;
+        c->next = nullptr;
     }
 }
 
-void deleteLastChild(ListChild &LC, addressC &C){
+void deleteLastChild(ListChild &LC, addressC &c){
     addressC prev = LC.first;
-    if (LC.first == nullptr){
-        C = nullptr;
+    if (isEmptyChild(LC)){
+        c = nullptr;
     }else if (LC.first->next == nullptr){
-        C = LC.first;
+        c = LC.first;
         LC.first = nullptr;
     }else{
         while (prev->next->next != nullptr){
             prev = prev->next;
         }
-        C = prev->next;
+        c = prev->next;
         prev->next = nullptr;
     }
 }

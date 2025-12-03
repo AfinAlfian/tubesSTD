@@ -7,21 +7,32 @@ addressP alokasiParent(string info){
     return P;
 }
 
-void insertFirstParent(ListParent &LP, addressP P) {
+bool isEmptyParent(ListParent LP) {
+    return LP.first == nullptr;
+}
+
+void insertFirstParent(ListParent &LP, addressP p) {
     if (LP.first == nullptr) {
-        LP.first = P;
+        LP.first = p;
     } else {
-        P->next = LP.first;
-        LP.first = P;
+        p->next = LP.first;
+        LP.first = p;
     }
 }
 
-void inputCabang(ListParent &LP, addressP &P){
+void inputCabang(ListParent &LP, addressP &p){
     string namaCabang;
+    addressP find;
     cout << "Masukkan nama cabang: ";
     cin >> namaCabang;
-    P = alokasiParent(namaCabang);
-    insertFirstParent(LP, P);
+    find = searchCabang(LP, namaCabang);
+    if (find == nullptr){
+        p = alokasiParent(namaCabang);
+        insertFirstParent(LP, p);
+        cout << "Cabang berhasil ditambahkan." << endl;
+    }else{
+        cout << "Cabang sudah ada." << endl;
+    }
 }
 
 addressP searchCabang(ListParent LP, string x){
@@ -37,39 +48,43 @@ addressP searchCabang(ListParent LP, string x){
     return find;
 }
 
-void deleteFirstParent(ListParent &LP, addressP &P){
+void deleteFirstParent(ListParent &LP, addressP &p){
     if (LP.first == nullptr){
-        P = nullptr;
+        p = nullptr;
     }else if (LP.first->next == nullptr){
-        P = LP.first;
+        p = LP.first;
         LP.first = nullptr;
     }else{
-        P = LP.first;
+        p = LP.first;
         LP.first = LP.first->next;
-        P->next = nullptr;
+        p->next = nullptr;
     }
 }
 
-void deleteAfterParent(ListParent &LP, addressP &P, addressP prec){
-    if (prec != nullptr){
-        P = prec->next;
-        prec->next = P->next;
-        P->next = nullptr;
+void deleteAfterParent(ListParent &LP, addressP &p, addressP prec){
+    if (isEmptyParent(LP)){
+        p = nullptr;
+    }else if (prec->next == nullptr){
+        p = nullptr;
+    }else{
+        p = prec->next;
+        prec->next = p->next;
+        p->next = nullptr;
     }
 }
 
-void deleteLastParent(ListParent &LP, addressP &P){
+void deleteLastParent(ListParent &LP, addressP &p){
     addressP prev = LP.first;
     if (LP.first == nullptr){
-        P = nullptr;
+        p = nullptr;
     }else if (LP.first->next == nullptr){
-        P = LP.first;
+        p = LP.first;
         LP.first = nullptr;
     }else{
         while (prev->next->next != nullptr){
             prev = prev->next;
         }
-        P = prev->next;
+        p = prev->next;
         prev->next = nullptr;
     }
 }

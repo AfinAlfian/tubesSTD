@@ -16,6 +16,7 @@ struct inventori{
 struct elmChild {
     infotype info;
     addressC next;
+    bool statusKetersediaan;
 };
 
 struct ListChild  { 
@@ -23,6 +24,7 @@ struct ListChild  {
 };
 
 addressC alokasiChild(inventori info);
+bool isEmptyChild(ListChild LC);
 void insertFirstChild(ListChild &LC, addressC C);
 void inputBarang(ListChild &LC, addressC &C);
 void deleteFirstChild(ListChild &LC, addressC &C);
