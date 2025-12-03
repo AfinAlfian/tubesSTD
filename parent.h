@@ -18,6 +18,7 @@ struct ListParent {
 };
 
 addressP alokasiParent(string info);
+bool isEmptyParent(ListParent LP);
 void insertFirstParent(ListParent &LP, addressP P);
 void inputCabang(ListParent &LP, addressP &P);
 void deleteFirstParent(ListParent &LP, addressP &P);
