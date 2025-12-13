@@ -10,7 +10,6 @@ typedef struct inventori infotype;
 struct inventori{
     string namaBarang;
     string kategori;
-    bool statusTersedia;
 };
 
 struct elmChild {

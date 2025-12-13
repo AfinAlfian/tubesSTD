@@ -23,15 +23,19 @@ void insertFirstParent(ListParent &LP, addressP p) {
 void inputCabang(ListParent &LP, addressP &p){
     string namaCabang;
     addressP find;
-    cout << "Masukkan nama cabang: ";
+    cout << "Masukkan nama cabang: ('-' untuk berhenti) :";
     cin >> namaCabang;
-    find = searchCabang(LP, namaCabang);
-    if (find == nullptr){
-        p = alokasiParent(namaCabang);
-        insertFirstParent(LP, p);
-        cout << "Cabang berhasil ditambahkan." << endl;
-    }else{
-        cout << "Cabang sudah ada." << endl;
+    while (namaCabang != "-"){
+        find = searchCabang(LP, namaCabang);
+        if (find == nullptr){
+            p = alokasiParent(namaCabang);
+            insertFirstParent(LP, p);
+            cout << "Cabang berhasil ditambahkan." << endl;
+        }else{
+            cout << "Cabang sudah ada." << endl;
+        }
+        cout << "Masukkan nama cabang: ('-' untuk berhenti) :";
+        cin >> namaCabang;
     }
 }
 
@@ -88,3 +92,4 @@ void deleteLastParent(ListParent &LP, addressP &p){
         prev->next = nullptr;
     }
 }
+
