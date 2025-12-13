@@ -25,5 +25,4 @@ void deleteFirstParent(ListParent &LP, addressP &P);
 void deletelastParent(ListParent &LP, addressP &P);
 void deleteAfterParent(ListParent &LP, addressP &P, addressP prec);
 addressP searchCabang(ListParent LP, string x);
-
 #endif

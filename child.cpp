@@ -36,17 +36,21 @@ addressC searchBarang(ListChild LC, string x){
 void inputBarang(ListChild &LC, addressC &c){
     infotype barang;
     addressC find;
-    cout << "Masukkan nama barang: ";
+    cout << "Masukkan nama barang: ('-' untuk berhenti) :";
     cin >> barang.namaBarang;
-    find = searchBarang(LC, barang.namaBarang);
-    if (find == nullptr){
-        cout << "Masukkan kategori barang: ";
-        cin >> barang.kategori;
-        c = alokasiChild(barang);
-        insertFirstChild(LC, c);       
-    }else{
-        cout << "Barang sudah ada dalam inventori." << endl;
-    }   
+    while (barang.namaBarang != "-"){
+        find = searchBarang(LC, barang.namaBarang);
+        if (find == nullptr){
+            cout << "Masukkan kategori barang: ";
+            cin >> barang.kategori;
+            c = alokasiChild(barang);
+            insertFirstChild(LC, c);       
+        }else{
+            cout << "Barang sudah ada dalam inventori." << endl;
+        }  
+        cout << "Masukkan nama barang: ('-' untuk berhenti) :";
+        cin >> barang.namaBarang;
+    }
 }
 
 void deleteFirstChild(ListChild &LC, addressC &c){
