@@ -22,16 +22,25 @@ void insertFirstRelasi(ListRelasi &LR, addressR R) {
     }
 }
 
+void insertLastRelasi(ListRelasi &LR, addressR r){
+    if (LR.first == nullptr){
+        LR.first = r;
+    } else {
+        addressR p = LR.first;
+        while (p->next != nullptr){
+            p = p->next;
+        }
+        p->next = r;
+    }
+}
+
 void inputRelasi(ListRelasi &LR, addressP p, addressC c){
     int n;
     cout << "Masukkan jumlah stok barang: ";
     cin >> n;
-    if (n > 0){
-        c->statusKetersediaan = true;
-    }
     addressR r = alokasiRelasi(p, c, n);   
     r->jumlahStok = n;
-    insertFirstRelasi(LR, r);
+    insertLastRelasi(LR, r);
 }
 
 void deleteFirstRelasi(ListRelasi &LR, addressR &r){

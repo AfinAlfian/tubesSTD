@@ -23,6 +23,7 @@ struct ListRelasi {
 addressR alokasiRelasi(addressP parent, addressC child, int jumlahStok);
 bool isEmptyRelasi(ListRelasi LR);
 void insertFirstRelasi(ListRelasi &LR, addressR r);
+void insertLastRelasi(ListRelasi &LR, addressR r);
 void inputRelasi(ListRelasi &LR, addressP parent, addressC child);
 void deleteFirstRelasi(ListRelasi &LR, addressR &r);
 void deleteAfterRelasi(ListRelasi &LR, addressR &r, addressR prec);
