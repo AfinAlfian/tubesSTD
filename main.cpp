@@ -9,7 +9,7 @@ int main() {
     addressP p;
     addressC c;
     addressR r;
-    
+    string namaCabang;
     int menu = -1;
     int sub = -1;
 
@@ -19,7 +19,7 @@ int main() {
         mainMenu();
         cin >> menu;
 
-        if (menu == 1) {  // ===== MENU CABANG =====
+        if (menu == 1) {
             sub = -1;
             while (sub != 0) {
                 clearScreen();
@@ -29,6 +29,7 @@ int main() {
 
                 if (sub == 1) {
                     inputCabang(LP, p);
+                    enterToContinue();
                 }else if (sub == 2) {
                     hapusCabang(LP, LR);
                     enterToContinue();
@@ -39,7 +40,7 @@ int main() {
             }
         }
 
-        else if (menu == 2) { // ===== MENU BARANG =====
+        else if (menu == 2) {
             sub = -1;
             while (sub != 0) {
                 clearScreen();
@@ -79,13 +80,13 @@ int main() {
                     enterToContinue();
                 }
                 else if (sub == 3) {
-                    updateStokBarang(LR);
+                    updateStokBarang(LR, LP, LC);
                     enterToContinue();
                 }
             }
         }
 
-        else if (menu == 4) { // ===== MENU LAPORAN =====
+        else if (menu == 4) {
             sub = -1;
             while (sub != 0) {
                 clearScreen();
@@ -98,11 +99,19 @@ int main() {
                     enterToContinue();
                 }
                 else if (sub == 2) {
-                    // hitungJumlah
+                    displayNamaCabang(LP);
+                    cout << "Masukkan nama cabang: ";
+                    cin >> namaCabang;
+
+                    tampilkanBarangDiCabang(LP, LR, namaCabang);
                     enterToContinue();
                 }
                 else if (sub == 3) {
-                    // statistik
+                    hitungJumlahBarangPerItem(LC, LR);
+                    enterToContinue();
+                }
+                else if (sub == 4) {
+                    statistikBarang(LC, LR);
                     enterToContinue();
                 }
             }

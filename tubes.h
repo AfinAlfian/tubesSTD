@@ -25,6 +25,11 @@ void displayNamaBarang(ListChild LC);
 void displayCabang(ListParent LP, ListRelasi LR);
 void hapusCabang(ListParent &LP, ListRelasi &LR);
 void hapusBarang(ListChild &LC, ListRelasi &LR);
-void updateStokBarang(ListRelasi &LR);
+void hapusBarangDariCabang(ListRelasi &LR);
+void updateStokBarang(ListRelasi &LR, ListParent LP, ListChild LC);
+void tampilkanBarangDiCabang(ListParent LP, ListRelasi LR, string namaCabang);
+void hitungJumlahBarangPerItem(ListChild LC, ListRelasi LR);
+void statistikBarang(ListChild LC, ListRelasi LR);
+void updateStatusBarang(addressC c, ListRelasi LR);
 #endif // TUBES_H_included
 

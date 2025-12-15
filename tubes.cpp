@@ -1,80 +1,75 @@
 #include "tubes.h"
 
 void header(){
-    cout << "╔══════════════════════════════════════╗" << endl;
-    cout << "    PROGRAM INVENTORI TOKO    " << endl;
-    cout << "╠══════════════════════════════════════╣" << endl;
+    cout << "+============================================+" << endl;
+    cout << "|        SISTEM INVENTORI CABANG TOKO        |" << endl;
+    cout << "|     Multi Linked List (Parent - Child)     |" << endl;
+    cout << "|                                            |" << endl;
+    cout << "|  Afin    - 103012400220                    |" << endl;
+    cout << "|  Sandres - 103012400100                    |" << endl;
+    cout << "+============================================+" << endl << endl;
 }
 
-void footer(){
-    cout << "==============================" << endl;
-    cout << "==============================" << endl;
-}
 void mainMenu(){
-    clearScreen();
-    int opsi;
-    cout << "1. Kelola Cabang" << endl;
-    cout << "2. Kelola Barang" << endl;
-    cout << "3. Kelola Inventori Cabang" << endl;
-    cout << "4. Laporan Inventori" << endl;
-    cout << "0. Keluar" << endl;
+    cout << "+============================================+" << endl;
+    cout << "|                  MENU UTAMA                |" << endl;
+    cout << "+============================================+" << endl;
+    cout << "| 1. Kelola Cabang                           |" << endl;
+    cout << "| 2. Kelola Barang                           |" << endl;
+    cout << "| 3. Kelola Inventori Cabang                 |" << endl;
+    cout << "| 4. Laporan Inventori                       |" << endl;
+    cout << "| 0. Keluar                                  |" << endl;
+    cout << "+============================================+" << endl;
     cout << "Pilih menu: ";
-
-};
+}
 
 void menuCabang(){
-    clearScreen();
-    int opsi;
-    cout << "1. Tambah Cabang" << endl;
-    cout << "2. Hapus Cabang" << endl;
-    cout << "3. Tampilkan Semua Cabang" << endl;
-    cout << "0. Kembali ke Menu Utama" << endl;
+    cout << "+================================================+" << endl;
+    cout << "|                MENU CABANG                     |" << endl;
+    cout << "+================================================+" << endl;
+    cout << "| 1. Tambah Cabang                               |" << endl;
+    cout << "| 2. Hapus Cabang                                |" << endl;
+    cout << "| 3. Tampilkan Semua Cabang                      |" << endl;
+    cout << "| 0. Kembali                                     |" << endl;
+    cout << "+================================================+" << endl;
     cout << "Pilih menu: ";
-};
+}
 
 void menuBarang(){
-    clearScreen();
-    cout << "1. Tambah Barang" << endl;
-    cout << "2. Hapus Barang" << endl;
-    cout << "3. Tampilkan Semua Barang" << endl;
-    cout << "0. Kembali ke Menu Utama" << endl;
+    cout << "+================================================+" << endl;
+    cout << "|                MENU BARANG                     |" << endl;
+    cout << "+================================================+" << endl;
+    cout << "| 1. Tambah Barang                               |" << endl;
+    cout << "| 2. Hapus Barang                                |" << endl;
+    cout << "| 3. Tampilkan Semua Barang                      |" << endl;
+    cout << "| 0. Kembali                                     |" << endl;
+    cout << "+================================================+" << endl;
     cout << "Pilih menu: ";
-};
+}
 
 void menuInventori(){
-        clearScreen();
-        cout << "1. Tambah data barang ke cabang" << endl;
-        cout << "2. Hapus data barang dari cabang" << endl;
-        cout << "3. Update stok barang di cabang" << endl;
-        cout << "0. Kembali ke Menu Utama" << endl;
-        cout << "Pilih menu: ";
-};
+    cout << "+================================================+" << endl;
+    cout << "|           MENU INVENTORI CABANG                |" << endl;
+    cout << "+================================================+" << endl;
+    cout << "| 1. Tambah Barang ke Cabang                     |" << endl;
+    cout << "| 2. Hapus Barang dari Cabang                    |" << endl;
+    cout << "| 3. Update Stok Barang                          |" << endl;
+    cout << "| 0. Kembali                                     |" << endl;
+    cout << "+================================================+" << endl;
+    cout << "Pilih menu: ";
+}
 
 void menuLaporan(){
-    clearScreen();
-    cout << "1. Tampilkan Info Inventori" << endl;
-    cout << "2. Hitung jumlah barang tersedia" << endl;
-    cout << "3. Statistik Cabang (stok barang terbanyak dan sedikit)" << endl;
-    cout << "0. Kembali ke Menu Utama" << endl;
+    cout << "+================================================+" << endl;
+    cout << "|               MENU LAPORAN                     |" << endl;
+    cout << "+================================================+" << endl;
+    cout << "| 1. Tampilkan Info Inventori                    |" << endl;
+    cout << "| 2. Tampilkan Barang di Cabang Tertentu         |" << endl;
+    cout << "| 3. Hitung Jumlah Barang (Per Item)             |" << endl;
+    cout << "| 4. Statistik Barang                            |" << endl;
+    cout << "| 0. Kembali                                     |" << endl;
+    cout << "+================================================+" << endl;
     cout << "Pilih menu: ";
-};
-
-void menu(int &n){
-    cout << "Menu Program Inventori Toko" << endl;
-    cout << "1. Tambah Cabang" << endl;
-    cout << "2. Tambah Barang" << endl;
-    cout << "3. Tambah data barang ke cabang" << endl;
-    cout << "4. Hapus Cabang" << endl;
-    cout << "5. Hapus Barang" << endl;
-    cout << "6. Cari Cabang" << endl;
-    cout << "7. Cari Barang" << endl;
-    cout << "8. Tampilkan barang di cabang tertentu" << endl;
-    cout << "9. Tampilkan Info Inventori" << endl;
-    cout << "10. Hitung jumlah barang tersedia" << endl;
-    cout << "11. Statistik Cabang (stok barang terbanyak dan sedikit)" << endl;
-    cout << "12. Keluar" << endl;
-    cout << "Pilih menu (1-12): ";
-    cin >> n;
 }
 
 void createList(ListParent &LP, ListChild &LC, ListRelasi &LR){
@@ -109,7 +104,7 @@ void tambahBarang(ListParent &LP, ListChild &LC, ListRelasi &LR){
     }
 
     inputRelasi(LR, p, c);
-
+    updateStatusBarang(c, LR);
     cout << "Barang berhasil ditambahkan ke cabang." << endl;
 }
 
@@ -162,7 +157,6 @@ void displayCabang(ListParent LP, ListRelasi LR) {
     }
 
     printf("=======================================================================\n");
-    enterToContinue();
 }
 
 void displayNamaCabang(ListParent LP) {
@@ -216,7 +210,6 @@ void hapusCabang(ListParent &LP, ListRelasi &LR) {
     addressP prec = nullptr;
     addressR r, prevR;
 
-    // cari cabang
     while (p != nullptr && p->info != namaCabang) {
         prec = p;
         p = p->next;
@@ -225,8 +218,6 @@ void hapusCabang(ListParent &LP, ListRelasi &LR) {
     if (p == nullptr) {
         cout << "Cabang tidak ditemukan." << endl;
     } else {
-
-        // ===== hapus semua relasi milik cabang =====
         r = LR.first;
         prevR = nullptr;
 
@@ -255,20 +246,20 @@ void hapusCabang(ListParent &LP, ListRelasi &LR) {
     }
 }
 
-void updateStokBarang(ListRelasi &LR){
+void updateStokBarang(ListRelasi &LR, ListParent LP, ListChild LC) {
     string namaCabang, namaBarang;
     int stokBaru;
     addressR r;
-
+    displayNamaCabang(LP);
     cout << "Masukkan nama cabang: ";
     cin >> namaCabang;
-
+    tampilkanBarangDiCabang(LP, LR, namaCabang);
     cout << "Masukkan nama barang: ";
     cin >> namaBarang;
 
     r = searchRelasi(LR, namaCabang, namaBarang);
     if (r == nullptr) {
-        cout << "Data barang di cabang tidak ditemukan." << endl;
+        cout << "Data barang atau cabang tidak ditemukan." << endl;
         return;
     }
 
@@ -296,48 +287,233 @@ void hapusBarang(ListChild &LC, ListRelasi &LR){
     cout << "Masukkan nama barang yang akan dihapus: ";
     cin >> namaBarang;
 
-    while (c != nullptr && c->info.namaBarang != namaBarang) {
+    while (c != nullptr && c->info.namaBarang != namaBarang){
         precC = c;
         c = c->next;
     }
 
-    if (c == nullptr) {
+    if (c == nullptr){
         cout << "Barang tidak ditemukan." << endl;
-        enterToContinue();
+    } else {
+        addressR r = LR.first;
+        addressR prevR = nullptr;
+
+        while (r != nullptr){
+            if (r->child == c){
+                addressR temp = r;
+
+                if (prevR == nullptr){
+                    deleteFirstRelasi(LR, r);
+                    r = LR.first;
+                }
+                else if (r->next == nullptr){
+                    deleteLastRelasi(LR, r);
+                    r = nullptr;
+                }
+                else{
+                    prevR->next = r->next;
+                    r = prevR->next;
+                }
+
+                temp->next = nullptr;
+                delete temp;
+            }
+            else{
+                prevR = r;
+                r = r->next;
+            }
+        }
+        if (precC == nullptr){
+            deleteFirstChild(LC, c);
+        }
+        else if (c->next == nullptr){
+            deleteLastChild(LC, c);
+        }
+        else{
+            deleteAfterChild(LC, c, precC);
+        }
+
+        delete c;
+        cout << "Barang berhasil dihapus." << endl;
+    }
+}
+
+void hapusBarangDariCabang(ListParent &LP, ListRelasi &LR) {
+    string namaCabang, namaBarang;
+    addressP p;
+    addressR r, prev;
+
+    displayNamaCabang(LP);
+    cout << "Masukkan nama cabang: ";
+    cin >> namaCabang;
+
+    p = searchCabang(LP, namaCabang);
+
+    if (p == nullptr) {
+        cout << "Cabang tidak ditemukan." << endl;
+    } else {
+        tampilkanBarangDiCabang(LP, LR, namaCabang);
+
+        cout << "Masukkan nama barang yang akan dihapus: ";
+        cin >> namaBarang;
+
+        r = LR.first;
+        prev = nullptr;
+
+        while (r != nullptr &&
+              !(r->parent == p &&
+                r->child->info.namaBarang == namaBarang)) {
+            prev = r;
+            r = r->next;
+        }
+
+        if (r == nullptr) {
+            cout << "Barang tidak ditemukan di cabang ini." << endl;
+        } else {
+            if (prev == nullptr) {
+                deleteFirstRelasi(LR, r);
+            } else if (r->next == nullptr) {
+                deleteLastRelasi(LR, r);
+            } else {
+                deleteAfterRelasi(LR, r, prev);
+            }
+
+            cout << "Barang berhasil dihapus dari cabang." << endl;
+        }
+    }
+}
+
+void tampilkanBarangDiCabang(ListParent LP, ListRelasi LR, string namaCabang) {
+    addressP p = searchCabang(LP, namaCabang);
+
+    if (p == nullptr) {
+        printf("Cabang tidak ditemukan.\n");
         return;
     }
 
+    printf("\nBarang di Cabang %s\n", namaCabang.c_str());
+    printf("%-5s %-20s %-10s\n", "No", "Nama Barang", "Stok");
+    printf("------------------------------------\n");
+
     addressR r = LR.first;
-    addressR prevR = nullptr;
+    int no = 1;
+    bool ada = false;
+
+    while (r != nullptr) {
+        if (r->parent == p) {
+            printf("%-5d %-20s %-10d\n",
+                   no++,
+                   r->child->info.namaBarang.c_str(),
+                   r->jumlahStok);
+            ada = true;
+        }
+        r = r->next;
+    }
+
+    if (!ada) {
+        printf("Belum ada barang di cabang ini.\n");
+    }
+}
+
+void hitungJumlahBarangPerItem(ListChild LC, ListRelasi LR) {
+    addressC c = LC.first;
+    addressR r;
+
+    cout << "\n===== JUMLAH BARANG TERSEDIA (PER ITEM) =====" << endl;
+    printf("%-20s %-15s\n", "Nama Barang", "Total Stok");
+    cout << "--------------------------------------------" << endl;
+
+    if (c == nullptr) {
+        cout << "Belum ada data barang." << endl;
+        return;
+    }
+
+    while (c != nullptr) {
+        int totalStok = 0;
+        r = LR.first;
+
+        while (r != nullptr) {
+            if (r->child == c) {
+                totalStok += r->jumlahStok;
+            }
+            r = r->next;
+        }
+
+        printf("%-20s %-15d\n",
+               c->info.namaBarang.c_str(),
+               totalStok);
+
+        c = c->next;
+    }
+
+    cout << "--------------------------------------------" << endl;
+}
+
+void statistikBarang(ListChild LC, ListRelasi LR) {
+    addressC c = LC.first;
+    addressR r;
+
+    if (c == nullptr) {
+        cout << "Belum ada data barang." << endl;
+        return;
+    }
+
+    addressC barangMax = nullptr;
+    addressC barangMin = nullptr;
+    int maxStok = -1;
+    int minStok = -1;
+
+    while (c != nullptr) {
+        int totalStok = 0;
+        r = LR.first;
+
+        while (r != nullptr) {
+            if (r->child == c) {
+                totalStok += r->jumlahStok;
+            }
+            r = r->next;
+        }
+
+        if (barangMax == nullptr || totalStok > maxStok) {
+            barangMax = c;
+            maxStok = totalStok;
+        }
+
+        if (barangMin == nullptr || totalStok < minStok) {
+            barangMin = c;
+            minStok = totalStok;
+        }
+
+        c = c->next;
+    }
+
+    cout << "\n===== STATISTIK BARANG =====" << endl;
+
+    cout << "Barang stok TERBANYAK :" << endl;
+    cout << "Nama Barang : " << barangMax->info.namaBarang << endl;
+    cout << "Total Stok  : " << maxStok << endl << endl;
+
+    cout << "Barang stok TERSEDIKIT :" << endl;
+    cout << "Nama Barang : " << barangMin->info.namaBarang << endl;
+    cout << "Total Stok  : " << minStok << endl;
+
+    cout << "===========================" << endl;
+}
+
+void updateStatusBarang(addressC c, ListRelasi LR) {
+    addressR r = LR.first;
+    int totalStok = 0;
 
     while (r != nullptr) {
         if (r->child == c) {
-
-            if (prevR == nullptr) {
-                deleteFirstRelasi(LR, r);
-                r = LR.first;
-            }
-            else if (r->next == nullptr) {
-                deleteLastRelasi(LR, r);
-                r = nullptr;
-            }
-            else {
-                prevR->next = r->next;
-            }
-
-        } else {
-            prevR = r;
-            r = r->next;
+            totalStok += r->jumlahStok;
         }
+        r = r->next;
     }
 
-    if (precC == nullptr) {
-        deleteFirstChild(LC, c);
-    } else if (c->next == nullptr) {
-        deleteLastChild(LC, c);
+    if (totalStok > 0) {
+        c->statusKetersediaan = true;
     } else {
-        deleteAfterChild(LC, c, precC);
+        c->statusKetersediaan = false;
     }
-
-    cout << "Barang  berhasil dihapus." << endl;
 }

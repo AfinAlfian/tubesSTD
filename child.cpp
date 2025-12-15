@@ -4,6 +4,7 @@ addressC alokasiChild(inventori info){
     addressC c = new elmChild;
     c->info = info;
     c->next = nullptr;
+    c->statusKetersediaan = false;
     return c;
 }
 
