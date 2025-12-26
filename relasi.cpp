@@ -1,6 +1,8 @@
 #include "relasi.h"
 
 addressR alokasiRelasi(addressP parent, addressC child, int jumlahStok){
+    //I.S. parent, child, jumlahStok terdefinisi
+    //F.S. Menghasilkan sebuah addressR baru yang berisi parent, child, jumlahStok dan next bernilai nullptr
     addressR R = new elmRelasi;
     R->parent = parent;
     R->child = child;
@@ -10,10 +12,14 @@ addressR alokasiRelasi(addressP parent, addressC child, int jumlahStok){
 }
 
 bool isEmptyRelasi(ListRelasi LR) {
+    //I.S. LR terdefinisi
+    //F.S. Mengembalikan true jika LR kosong, false jika tidak
     return LR.first == nullptr;
 }
 
 void insertFirstRelasi(ListRelasi &LR, addressR R) {
+    //I.S. LR terdefinisi, R terdefinisi
+    //F.S. R menjadi elemen pertama pada LR
     if (LR.first == nullptr) {
         LR.first = R;
     } else {
@@ -23,6 +29,8 @@ void insertFirstRelasi(ListRelasi &LR, addressR R) {
 }
 
 void insertLastRelasi(ListRelasi &LR, addressR r){
+    //I.S. LR terdefinisi, r terdefinisi
+    //F.S. r menjadi elemen terakhir pada LR
     if (LR.first == nullptr){
         LR.first = r;
     } else {
@@ -35,6 +43,8 @@ void insertLastRelasi(ListRelasi &LR, addressR r){
 }
 
 void inputRelasi(ListRelasi &LR, addressP p, addressC c){
+    //I.S. LR, p, c terdefinisi
+    //F.S. Menambahkan relasi baru ke dalam LR dengan insertLastRelasi
     int n;
     cout << "Masukkan jumlah stok barang: ";
     cin >> n;
@@ -44,6 +54,8 @@ void inputRelasi(ListRelasi &LR, addressP p, addressC c){
 }
 
 void deleteFirstRelasi(ListRelasi &LR, addressR &r){
+    //I.S. LR terdefinisi
+    //F.S. Menghapus elemen pertama dari LR dan mengembalikan addressR
     if (isEmptyRelasi(LR)){
         r = nullptr;
     }else if (LR.first->next == nullptr){
@@ -57,6 +69,8 @@ void deleteFirstRelasi(ListRelasi &LR, addressR &r){
 }
 
 void deleteAfterRelasi(ListRelasi &LR, addressR &r, addressR prec){
+    //I.S. LR terdefinisi, prec terdefinisi
+    //F.S. Menghapus elemen setelah prec dari LR dan mengembalikan addressR
     if (isEmptyRelasi(LR)){
         r = nullptr;
     }else if (prec->next == nullptr){
@@ -69,6 +83,8 @@ void deleteAfterRelasi(ListRelasi &LR, addressR &r, addressR prec){
 }
 
 void deleteLastRelasi(ListRelasi &LR, addressR &r){
+    //I.S. LR terdefinisi
+    //F.S. Menghapus elemen terakhir dari LR dan mengembalikan addressR
     addressR prev= LR.first;
     if (isEmptyRelasi(LR)){
         r = nullptr;
@@ -85,6 +101,8 @@ void deleteLastRelasi(ListRelasi &LR, addressR &r){
 }
 
 addressR searchRelasi(ListRelasi LR, string namaCabang, string namaBarang){
+    //I.S. LR terdefinisi, namaCabang, namaBarang terdefinisi
+    //F.S. Mengembalikan addressR dari relasi dengan namaCabang dan namaBarang, atau nullptr jika tidak ditemukan
     addressR r = LR.first;
     addressR find = nullptr;
     while (r != nullptr){

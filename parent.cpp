@@ -1,6 +1,8 @@
 #include "parent.h"
 
 addressP alokasiParent(string info){
+    //I.S. info terdefinisi
+    //F.S. Menghasilkan sebuah addressP baru yang berisi info dan next bernilai nullptr
     addressP P = new elmParent;
     P->info = info;
     P->next = nullptr;
@@ -8,10 +10,14 @@ addressP alokasiParent(string info){
 }
 
 bool isEmptyParent(ListParent LP) {
+    //I.S. LP terdefinisi
+    //F.S. Mengembalikan true jika LP kosong, false jika tidak
     return LP.first == nullptr;
 }
 
 void insertFirstParent(ListParent &LP, addressP p) {
+    //I.S. LP terdefinisi, p terdefinisi
+    //F.S. p menjadi elemen pertama pada LP
     if (LP.first == nullptr) {
         LP.first = p;
     } else {
@@ -21,6 +27,8 @@ void insertFirstParent(ListParent &LP, addressP p) {
 }
 
 void inputCabang(ListParent &LP, addressP &p){
+    //I.S. LP terdefinisi
+    //F.S. Menambahkan cabang baru ke dalam LP dengan insertFirstParent
     string namaCabang;
     addressP find;
     cout << "Masukkan nama cabang: ('-' untuk berhenti) :";
@@ -40,6 +48,8 @@ void inputCabang(ListParent &LP, addressP &p){
 }
 
 addressP searchCabang(ListParent LP, string x){
+    //I.S. LP terdefinisi, x terdefinisi
+    //F.S. Mengembalikan addressP dari cabang dengan nama x, atau nullptr jika tidak ditemukan
     addressP p, find;
     p = LP.first;
     find = nullptr;
@@ -53,6 +63,8 @@ addressP searchCabang(ListParent LP, string x){
 }
 
 void deleteFirstParent(ListParent &LP, addressP &p){
+    //I.S. LP terdefinisi
+    //F.S. Menghapus elemen pertama dari LP dan mengembalikan addressP
     if (LP.first == nullptr){
         p = nullptr;
     }else if (LP.first->next == nullptr){
@@ -66,6 +78,8 @@ void deleteFirstParent(ListParent &LP, addressP &p){
 }
 
 void deleteAfterParent(ListParent &LP, addressP &p, addressP prec){
+    //I.S. LP terdefinisi, prec terdefinisi
+    //F.S. Menghapus elemen setelah prec dari LP dan mengembalikan address
     if (isEmptyParent(LP)){
         p = nullptr;
     }else if (prec->next == nullptr){
@@ -78,6 +92,8 @@ void deleteAfterParent(ListParent &LP, addressP &p, addressP prec){
 }
 
 void deleteLastParent(ListParent &LP, addressP &p){
+    //I.S. LP terdefinisi
+    //F.S. Menghapus elemen terakhir dari LP dan mengembalikan addressP
     addressP prev = LP.first;
     if (LP.first == nullptr){
         p = nullptr;

@@ -116,5 +116,11 @@ int main() {
                 }
             }
         }
+        else if (menu == 5) {
+            clearScreen();
+            header();
+            tampilkanSemua(LP, LR);
+            enterToContinue();
+        }
     }
 }

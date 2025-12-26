@@ -31,5 +31,7 @@ void tampilkanBarangDiCabang(ListParent LP, ListRelasi LR, string namaCabang);
 void hitungJumlahBarangPerItem(ListChild LC, ListRelasi LR);
 void statistikBarang(ListChild LC, ListRelasi LR);
 void updateStatusBarang(addressC c, ListRelasi LR);
+void tampilkanSemua(ListParent LP, ListRelasi LR);
+
 #endif // TUBES_H_included
 
