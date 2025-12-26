@@ -1,6 +1,8 @@
 #include "child.h"
 
 addressC alokasiChild(inventori info){
+    //I.S. info terdefinisi
+    //F.S. Menghasilkan sebuah addressC baru yang berisi info dan next bernilai nullptr
     addressC c = new elmChild;
     c->info = info;
     c->next = nullptr;
@@ -9,10 +11,14 @@ addressC alokasiChild(inventori info){
 }
 
 bool isEmptyChild(ListChild LC) {
+    //I.S. LC terdefinisi
+    //F.S. Mengembalikan true jika LC kosong, false jika tidak
     return LC.first == nullptr;
 }
 
 void insertFirstChild(ListChild &LC, addressC c) {
+    //I.S. LC terdefinisi, c terdefinisi
+    //F.S. c menjadi elemen pertama pada LC
     if (isEmptyChild(LC)) {
         LC.first = c;
     } else {
@@ -22,6 +28,8 @@ void insertFirstChild(ListChild &LC, addressC c) {
 }
 
 addressC searchBarang(ListChild LC, string x){
+    //I.S. LC terdefinisi, x terdefinisi
+    //F.S. Mengembalikan addressC dari barang dengan nama x, atau nullptr jika tidak ditemukan
     addressC p, find;
     p = LC.first;
     find = nullptr;
@@ -35,6 +43,8 @@ addressC searchBarang(ListChild LC, string x){
 }
 
 void inputBarang(ListChild &LC, addressC &c){
+    //I.S. LC terdefinisi
+    //F.S. Menambahkan barang baru ke dalam LC
     infotype barang;
     addressC find;
     cout << "Masukkan nama barang: ('-' untuk berhenti) :";
@@ -55,6 +65,8 @@ void inputBarang(ListChild &LC, addressC &c){
 }
 
 void deleteFirstChild(ListChild &LC, addressC &c){
+    //I.S. LC terdefinisi
+    //F.S. Menghapus elemen pertama dari LC dan mengembalikan addressC
     if (isEmptyChild(LC)){
         c = nullptr;
     }else if (LC.first->next == nullptr){
@@ -68,6 +80,8 @@ void deleteFirstChild(ListChild &LC, addressC &c){
 }
 
 void deleteAfterChild(ListChild &LC, addressC &c, addressC prec){
+    //I.S. LC terdefinisi, prec terdefinisi
+    //F.S. Menghapus elemen setelah prec dari LC dan mengembalikan address
     if (isEmptyChild(LC)){
         c = nullptr;
     }else if (prec->next == nullptr){
@@ -80,6 +94,8 @@ void deleteAfterChild(ListChild &LC, addressC &c, addressC prec){
 }
 
 void deleteLastChild(ListChild &LC, addressC &c){
+    //I.S. LC terdefinisi
+    //F.S. Menghapus elemen terakhir dari LC dan mengembalikan addressC
     addressC prev = LC.first;
     if (isEmptyChild(LC)){
         c = nullptr;

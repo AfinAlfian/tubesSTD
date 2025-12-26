@@ -1,6 +1,8 @@
 #include "tubes.h"
 
 void header(){
+    //I.S. -
+    //F.S. Menampilkan header program
     cout << "+============================================+" << endl;
     cout << "|        SISTEM INVENTORI CABANG TOKO        |" << endl;
     cout << "|     Multi Linked List (Parent - Child)     |" << endl;
@@ -11,6 +13,8 @@ void header(){
 }
 
 void mainMenu(){
+    //I.S. -
+    //F.S. Menampilkan menu utama
     cout << "+============================================+" << endl;
     cout << "|                  MENU UTAMA                |" << endl;
     cout << "+============================================+" << endl;
@@ -24,6 +28,8 @@ void mainMenu(){
 }
 
 void menuCabang(){
+    //I.S. -
+    //F.S. Menampilkan menu cabang
     cout << "+================================================+" << endl;
     cout << "|                MENU CABANG                     |" << endl;
     cout << "+================================================+" << endl;
@@ -36,6 +42,8 @@ void menuCabang(){
 }
 
 void menuBarang(){
+    //I.S. -
+    //F.S. Menampilkan menu barang
     cout << "+================================================+" << endl;
     cout << "|                MENU BARANG                     |" << endl;
     cout << "+================================================+" << endl;
@@ -48,6 +56,8 @@ void menuBarang(){
 }
 
 void menuInventori(){
+    //I.S. -
+    //F.S. Menampilkan menu inventori cabang
     cout << "+================================================+" << endl;
     cout << "|           MENU INVENTORI CABANG                |" << endl;
     cout << "+================================================+" << endl;
@@ -60,6 +70,8 @@ void menuInventori(){
 }
 
 void menuLaporan(){
+    //I.S. -
+    //F.S. Menampilkan menu laporan inventori
     cout << "+================================================+" << endl;
     cout << "|               MENU LAPORAN                     |" << endl;
     cout << "+================================================+" << endl;
@@ -73,12 +85,16 @@ void menuLaporan(){
 }
 
 void createList(ListParent &LP, ListChild &LC, ListRelasi &LR){
+    //I.S. -
+    //F.S. Membuat list parent, child, dan relasi menjadi kosong
     LP.first = nullptr;
     LC.first = nullptr;
     LR.first = nullptr;
 }
 
 void tambahBarang(ListParent &LP, ListChild &LC, ListRelasi &LR){
+    //I.S. LP, LC, LR terdefinisi
+    //F.S. Menambahkan barang ke cabang tertentu dan memperbarui status ketersediaan barang
     string namaCabang, namaBarang;
     addressP p;
     addressC c;
@@ -109,6 +125,8 @@ void tambahBarang(ListParent &LP, ListChild &LC, ListRelasi &LR){
 }
 
 void clearScreen() {
+    //I.S. -
+    //F.S. Membersihkan layar
     #ifdef _WIN32
         system("cls");
     #else
@@ -117,12 +135,16 @@ void clearScreen() {
 }
 
 void enterToContinue() {
+    //I.S. -
+    //F.S. Menunggu user menekan Enter untuk melanjutkan
     cout << "Press Enter to continue...";
     cin.ignore();
     cin.get();
 }
 
 void displayCabang(ListParent LP, ListRelasi LR) {
+    //I.S. LP, LR terdefinisi
+    //F.S. Menampilkan daftar cabang beserta jumlah barang dan total stoknya
     addressP p;
     addressR r;
     int no = 1;
@@ -160,6 +182,8 @@ void displayCabang(ListParent LP, ListRelasi LR) {
 }
 
 void displayNamaCabang(ListParent LP) {
+    //I.S. LP terdefinisi
+    //F.S. Menampilkan daftar nama cabang
     addressP p = LP.first;
     int no = 1;
 
@@ -180,6 +204,8 @@ void displayNamaCabang(ListParent LP) {
 }
 
 void displayNamaBarang(ListChild LC) {
+    //I.S. LC terdefinisi
+    //F.S. Menampilkan daftar nama barang
     addressC c = LC.first;
 
     if (c == nullptr) {
@@ -202,6 +228,8 @@ void displayNamaBarang(ListChild LC) {
 }
 
 void hapusCabang(ListParent &LP, ListRelasi &LR) {
+    //I.S. LP, LR terdefinisi
+    //F.S. Menghapus cabang beserta semua relasi yang terkait dengannya
     displayNamaCabang(LP);
     string namaCabang;
     cout << "Masukkan nama cabang yang akan dihapus: ";
@@ -247,6 +275,8 @@ void hapusCabang(ListParent &LP, ListRelasi &LR) {
 }
 
 void updateStokBarang(ListRelasi &LR, ListParent LP, ListChild LC) {
+    //I.S. LR, LP, LC terdefinisi
+    //F.S. Memperbarui stok barang di cabang tertentu
     string namaCabang, namaBarang;
     int stokBaru;
     addressR r;
@@ -279,6 +309,8 @@ void updateStokBarang(ListRelasi &LR, ListParent LP, ListChild LC) {
 }
 
 void hapusBarang(ListChild &LC, ListRelasi &LR){
+    //I.S. LC, LR terdefinisi
+    //F.S. Menghapus barang dari inventori beserta semua relasi yang terkait 
     string namaBarang;
     addressC c = LC.first;
     addressC precC = nullptr;
@@ -339,6 +371,8 @@ void hapusBarang(ListChild &LC, ListRelasi &LR){
 }
 
 void hapusBarangDariCabang(ListParent &LP, ListRelasi &LR) {
+    //I.S. LP, LR terdefinisi
+    //F.S. Menghapus barang dari cabang tertentu
     string namaCabang, namaBarang;
     addressP p;
     addressR r, prev;
@@ -384,6 +418,8 @@ void hapusBarangDariCabang(ListParent &LP, ListRelasi &LR) {
 }
 
 void tampilkanBarangDiCabang(ListParent LP, ListRelasi LR, string namaCabang) {
+    //I.S. LP, LR terdefinisi, namaCabang terdefinisi
+    //F.S. Menampilkan daftar barang beserta stoknya di cabang tertentu
     addressP p = searchCabang(LP, namaCabang);
 
     if (p == nullptr) {
@@ -401,10 +437,7 @@ void tampilkanBarangDiCabang(ListParent LP, ListRelasi LR, string namaCabang) {
 
     while (r != nullptr) {
         if (r->parent == p) {
-            printf("%-5d %-20s %-10d\n",
-                   no++,
-                   r->child->info.namaBarang.c_str(),
-                   r->jumlahStok);
+            printf("%-5d %-20s %-10d\n", no++, r->child->info.namaBarang.c_str(), r->jumlahStok);
             ada = true;
         }
         r = r->next;
@@ -416,6 +449,8 @@ void tampilkanBarangDiCabang(ListParent LP, ListRelasi LR, string namaCabang) {
 }
 
 void hitungJumlahBarangPerItem(ListChild LC, ListRelasi LR) {
+    //I.S. LC, LR terdefinisi
+    //F.S. Menampilkan jumlah total stok untuk setiap barang
     addressC c = LC.first;
     addressR r;
 
@@ -450,6 +485,8 @@ void hitungJumlahBarangPerItem(ListChild LC, ListRelasi LR) {
 }
 
 void statistikBarang(ListChild LC, ListRelasi LR) {
+    //I.S. LC, LR terdefinisi
+    //F.S. Menampilkan barang dengan stok terbanyak dan tersedikit
     addressC c = LC.first;
     addressR r;
 
@@ -501,6 +538,8 @@ void statistikBarang(ListChild LC, ListRelasi LR) {
 }
 
 void updateStatusBarang(addressC c, ListRelasi LR) {
+    //I.S. c, LR terdefinisi
+    //F.S. Memperbarui status ketersediaan barang berdasarkan total stoknya
     addressR r = LR.first;
     int totalStok = 0;
 
