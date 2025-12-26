@@ -22,6 +22,7 @@ void mainMenu(){
     cout << "| 2. Kelola Barang                           |" << endl;
     cout << "| 3. Kelola Inventori Cabang                 |" << endl;
     cout << "| 4. Laporan Inventori                       |" << endl;
+    cout << "| 5. Tampilkan semua data yang ada           |" << endl;
     cout << "| 0. Keluar                                  |" << endl;
     cout << "+============================================+" << endl;
     cout << "Pilih menu: ";
@@ -554,5 +555,22 @@ void updateStatusBarang(addressC c, ListRelasi LR) {
         c->statusKetersediaan = true;
     } else {
         c->statusKetersediaan = false;
+    }
+}
+
+void tampilkanSemua(ListParent LP, ListRelasi LR) {
+    // I.S. LP dan LR terdefinisi
+    // F.S. Menampilkan seluruh cabang beserta daftar barang dan stoknya
+
+    if (LP.first == nullptr) {
+        printf("Belum ada data cabang.\n");
+    } else {
+        addressP p = LP.first;
+
+        while (p != nullptr) {
+            tampilkanBarangDiCabang(LP, LR, p->info);
+            printf("\n");
+            p = p->next;
+        }
     }
 }
