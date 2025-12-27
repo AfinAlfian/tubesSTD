@@ -151,8 +151,7 @@ void displayCabang(ListParent LP, ListRelasi LR) {
     int no = 1;
 
     printf("\n==================== DAFTAR CABANG ====================\n");
-    printf("%-5s %-25s %-20s %-20s\n",
-           "No", "Nama Cabang", "Jumlah Barang", "Total Stok");
+    printf("%-5s %-25s %-20s %-20s\n", "No", "Nama Cabang", "Jumlah Barang", "Total Stok");
     printf("-----------------------------------------------------------------------\n");
 
     p = LP.first;
@@ -169,12 +168,7 @@ void displayCabang(ListParent LP, ListRelasi LR) {
             r = r->next;
         }
 
-        printf("%-5d %-25s %-20d %-20d\n",
-               no,
-               p->info.c_str(),
-               jumlahBarang,
-               totalStok);
-
+        printf("%-5d %-25s %-20d %-20d\n", no,p->info.c_str(), jumlahBarang, totalStok);
         no++;
         p = p->next;
     }
@@ -252,13 +246,16 @@ void hapusCabang(ListParent &LP, ListRelasi &LR) {
 
         while (r != nullptr) {
             if (r->parent == p) {
-
                 if (prevR == nullptr) {
-                    LR.first = r->next;
-                    r = LR.first;
-                } else {
-                    prevR->next = r->next;
-                }
+                deleteFirstRelasi(LR, r);
+                r = LR.first;
+            } else if (r->next == nullptr) {
+                deleteLastRelasi(LR, r);
+                r = nullptr;
+            } else {
+                deleteAfterRelasi(LR, r, prevR);
+                r = prevR->next;
+            }
             } else {
                 prevR = r;
                 r = r->next;
@@ -333,23 +330,16 @@ void hapusBarang(ListChild &LC, ListRelasi &LR){
 
         while (r != nullptr){
             if (r->child == c){
-                addressR temp = r;
-
                 if (prevR == nullptr){
                     deleteFirstRelasi(LR, r);
                     r = LR.first;
-                }
-                else if (r->next == nullptr){
+                }else if (r->next == nullptr){
                     deleteLastRelasi(LR, r);
                     r = nullptr;
-                }
-                else{
-                    prevR->next = r->next;
+                }else{
+                    deleteAfterRelasi(LR, r, prevR);
                     r = prevR->next;
                 }
-
-                temp->next = nullptr;
-                delete temp;
             }
             else{
                 prevR = r;
@@ -358,15 +348,11 @@ void hapusBarang(ListChild &LC, ListRelasi &LR){
         }
         if (precC == nullptr){
             deleteFirstChild(LC, c);
-        }
-        else if (c->next == nullptr){
+        }else if (c->next == nullptr){
             deleteLastChild(LC, c);
-        }
-        else{
+        }else{
             deleteAfterChild(LC, c, precC);
         }
-
-        delete c;
         cout << "Barang berhasil dihapus." << endl;
     }
 }
@@ -474,11 +460,7 @@ void hitungJumlahBarangPerItem(ListChild LC, ListRelasi LR) {
             }
             r = r->next;
         }
-
-        printf("%-20s %-15d\n",
-               c->info.namaBarang.c_str(),
-               totalStok);
-
+        printf("%-20s %-15d\n",c->info.namaBarang.c_str(),totalStok);
         c = c->next;
     }
 
